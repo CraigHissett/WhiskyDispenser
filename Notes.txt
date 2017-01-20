@@ -1,27 +1,21 @@
+Add templates for:
 
-Added a Websocket Handler to /socket
-Create a client script on an ESP8266 and try and get control over the ESP8266 via web interface....
-http://thethingsystem.com/dev/Clients.html
-http://www.codestance.com/tutorials-archive/python-tornado-web-server-with-websockets-part-i-441
+Glenmorangie (Stevie's Dispenser; 5 bottles)
+Jack Daniel's (Craig's Dispenser; 3 bottles)
 
+write python file and create Class for each dispenser.
+Class to contain variables required to operate each dispenser; number of bottles, measures available etc.
+Also stor number of steps taken to move to positions (allows for default Arduino sketch to be used on all instances of the machine)
 
-Idea
+Configure Pi Image to:
+Update from github on startup (/etc/rc.local) - allows updates to take place by simply rebooting.
+Open web browswer on startup and load localhost:8000
+Hide mouse cursor on Pi for a smooth
 
-Have the web interface handlers update some global variables in the main python script:
-[DEVICE1, 1; DEVICE2, 0; DEVICE3, 0] for example
+Write Arduino Sketch to:
 
-Have the socket client (the ESP8266) send a message to the socket of it's name; DEVICE1, DEVICE 2 etc.
-The socket handler can then check the variable for the device name and return the value for it; 1 or 0.
-
-The client can the use this to trigger the relative pin for the relay, 1 being on and 0 being off.
-
-
-Could be further expanded to allo more variable data to be kept:
-
-DeviceName, VariableName, Value
-
-MainReceiver, Relay1, 1
-MainReceiver, Relay2, 1
-SubReceiver, Relay 1, 0
-
-etc
+Move drinks carriage (stepper motors)
+Raise drinks carriage to optic (servo motors?)
+Stop at end stops
+Accept commands from Serial
+Send serial feedback ("Moving...", "Dispensing...","...Complete", "Error") JSON format to display straight on GUI
