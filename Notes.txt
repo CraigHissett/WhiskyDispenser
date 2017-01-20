@@ -1,0 +1,27 @@
+
+Added a Websocket Handler to /socket
+Create a client script on an ESP8266 and try and get control over the ESP8266 via web interface....
+http://thethingsystem.com/dev/Clients.html
+http://www.codestance.com/tutorials-archive/python-tornado-web-server-with-websockets-part-i-441
+
+
+Idea
+
+Have the web interface handlers update some global variables in the main python script:
+[DEVICE1, 1; DEVICE2, 0; DEVICE3, 0] for example
+
+Have the socket client (the ESP8266) send a message to the socket of it's name; DEVICE1, DEVICE 2 etc.
+The socket handler can then check the variable for the device name and return the value for it; 1 or 0.
+
+The client can the use this to trigger the relative pin for the relay, 1 being on and 0 being off.
+
+
+Could be further expanded to allo more variable data to be kept:
+
+DeviceName, VariableName, Value
+
+MainReceiver, Relay1, 1
+MainReceiver, Relay2, 1
+SubReceiver, Relay 1, 0
+
+etc
