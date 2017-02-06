@@ -33,7 +33,7 @@
             //alert("after heating post");
         });
       });
-      $("#square bg img5", "#img5").click(function(e) {
+      $("#DrinkDiv5").click(function(e) {
         e.preventDefault();
         var Bottle_Value = 5;
         $.post("", {"command":"Pour", "value":Bottle_Value}, function(data) {
@@ -149,7 +149,6 @@ p{
         <div class="table">
             <div class="table-cell">
                <a href="https://www.glenmorangie.com/en/glenmorangie-the-original">Original</a> <br>
-                    <button type="button">Single</button> <button type="button">Double</button>
             </div>
         </div>
     </div>
@@ -158,6 +157,7 @@ p{
    <div class="content">
         <div class="table">
             <div class="table-cell">
+                    <button type="button">Single</button> <button type="button">Double</button>
             </div>
         </div>
     </div>
@@ -191,11 +191,11 @@ p{
         </div>
     </div>
 </div>
-<div id="DrinkDiv5" class="square bg img6">
+<div class="square bg img6">
    <div class="content">
         <div class="table">
-            <div class="table-cell">
-                Text here.
+            <div id="DrinkDiv5" class="table-cell">
+                Drink 5 Name HERE
             </div>
         </div>
     </div>
