@@ -63,28 +63,7 @@ class GlenHandler(tornado.web.RequestHandler):
         WebCommand = self.get_argument ('command', '')
         WebValue = self.get_argument ('value', '')
         
-        if WebCommand == 'Pi':
-            if WebValue == 'Shutdown':
-                if sys.platform == 'win32':
-                    os.system('shutdown /s')
-                else:
-                    os.system('shutdown -h now')
-            elif WebValue == 'Reboot':
-                if sys.platform == 'win32':
-                    os.system('shutdown /r')
-                else:
-                    os.system('shutdown -r now')
-            else:
-                print('No matching Pi Command')
-                return
-        elif WebCommand == 'Arduino':
-            if WebValue == 'Reset':
-                print('No matching Pi Command')
-                return                
-            else:
-                print('No matching Arduino Command')
-                return
-        elif WebCommand == 'Pour':
+        if WebCommand == 'Pour':
             if WebValue == '1':
                 print('Drink 1 requested')
                 return
@@ -102,6 +81,13 @@ class GlenHandler(tornado.web.RequestHandler):
                 return
             else:
                 print('Unknown drink selection')
+        elif WebCommand == 'Measure':
+            if WebValue == 'Single':
+                print('Single Selected')
+                return
+            elif WebValue == 'Double':
+                print('Double Selected')
+                return    
         else:
             print('Command not recognised')
             
