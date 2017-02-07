@@ -12,32 +12,22 @@
             alert("Drink 1 Requested");
         });
       });
-      $("#DrinkDiv2").click(function(e) {
+      $("#PourDrink").click(function(e) {
         e.preventDefault();
-        var Bottle_Value = 2;
+        var Bottle_Value = $(this).val();
         $.post("", {"command":"Pour", "value":Bottle_Value}, function(data) {
-            //alert("after heating post");
+            //alert("Drink 5 Requested");
+            //$('#results').html('Update: '+data.msg);
+            $('#results').html('Drink ' + Bottle_Value + ' selected');
         });
       });
-      $("#DrinkDiv3").click(function(e) {
+      $("#Measure").click(function(e) {
         e.preventDefault();
-        var Bottle_Value = 3;
-        $.post("", {"command":"Pour", "value":Bottle_Value}, function(data) {
-            //alert("after heating post");
-        });
-      });
-      $("#DrinkDiv4").click(function(e) {
-        e.preventDefault();
-        var Bottle_Value = 4;
-        $.post("", {"command":"Pour", "value":Bottle_Value}, function(data) {
-            //alert("after heating post");
-        });
-      });
-      $("#DrinkDiv5").click(function(e) {
-        e.preventDefault();
-        var Bottle_Value = 5;
-        $.post("", {"command":"Pour", "value":Bottle_Value}, function(data) {
-            alert("Drink 5 Requested");
+        var Measure_Value = $(this).val();
+        $.post("", {"command":"Measure", "value":Measure_Value}, function(data) {
+            //alert("Measure changed");
+            //$('#results').html('Update: '+data.msg);
+            $('#MeasureSelected').html(Measure_Value + ' selected');
         });
       });
     });
@@ -149,6 +139,7 @@ p{
         <div class="table">
             <div class="table-cell">
                <a href="https://www.glenmorangie.com/en/glenmorangie-the-original">Original</a> <br>
+               <button id="PourDrink" name="Pour" value="1">Pour Measure</button>
             </div>
         </div>
     </div>
@@ -156,8 +147,10 @@ p{
 <div class="square bg img2">
    <div class="content">
         <div class="table">
+            <div id="MeasureSelected"></div>
             <div class="table-cell">
-                    <button type="button">Single</button> <button type="button">Double</button>
+            <button type="button">Single</button> <button type="button">Double</button>
+            <button id="Measure" name="Single" value="Single">Single</button> <button id="Measure" name="Double" value="Double">Single</button>
             </div>
         </div>
     </div>
@@ -167,8 +160,7 @@ p{
         <div class="table">
             <div class="table-cell">
                 <a href="https://www.glenmorangie.com/en/glenmorangie-a-midwinter-nights-dram">Midwinter</a> <br>
-                    <button type="button">Single</button> <button type="button">Double</button>
-
+                <button id="PourDrink" name="Pour" value="2">Pour Measure</button>
             </div>
         </div>
     </div>
@@ -177,7 +169,7 @@ p{
     <div class="content">
         <div class="table">
             <div class="table-cell">
-                Text Here
+            <button id="PourDrink" name="Pour" value="3">Pour Measure</button>
             </div>
         </div>
     </div>
@@ -186,7 +178,7 @@ p{
    <div class="content">
         <div class="table">
             <div class="table-cell">
-                Text here.
+            <button id="PourDrink" name="Pour" value="4">Pour Measure</button>
             </div>
         </div>
     </div>
@@ -195,10 +187,11 @@ p{
    <div class="content">
         <div class="table">
             <div id="DrinkDiv5" class="table-cell">
-                Drink 5 Name HERE
+            <button id="PourDrink" name="Pour" value="5">Pour Measure</button>
             </div>
         </div>
     </div>
 </div>
+<div id="results"></div>
 </body>
 </html>
