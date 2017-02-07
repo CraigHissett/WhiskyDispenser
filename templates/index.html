@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Whisky Dispenser - Mr White</title>
+  <script src="static/js/jquery-2.2.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#PiShutdown, #PiReboot").click(function(e) {
+        e.preventDefault();
+        var Pi_value = $(this).val();
+        $.post("", {"command":"Pi", "value":Pi_value}, function(data) {
+            //alert("after heating post");
+        });
+      });
+      $("#ArdReset").click(function(e) {
+        e.preventDefault();
+        var Arduino_value = $(this).val();
+        $.post("", {"command":"Arduino", "value":Arduino_value}, function(data) {
+            //alert("after heating post");
+        });
+      });
+    });
+</script>
+</head>  
+<body>
+<div align="center"> 
+<h1>Whisky Dispenser</h1>
+Welcome to the Whisky Dispenser Home Page! </br>
+<p></p>
+<form>
+  <button id="PiReboot" name="Pi" value="Reboot">Reboot Aquariumatic</button>
+  <button id="PiShutdown" name="Pi" value="Shutdown">Safely close Aquariumatic</button><br>
+  <p></p>
+  <button id="ArdReset" name="Arduino" value="Reset">Reset Slave Unit</button>
+  <p></p>
+Select your option: </br>
+<a href="/glenmorange">Glenmorangie</a><br>
+<a href="/settings">Dispenser Settings</a><br>
+</div>
+</body>
+</html>
