@@ -8,7 +8,6 @@ import json
 import time
 import datetime
 import os, sys
-import fcntl
 import struct
 import socket
 
@@ -52,7 +51,7 @@ class IndexHandler(tornado.web.RequestHandler):
             print('Command not recognised')
 
 
-class IndexHandler(tornado.web.RequestHandler):
+class SettingsHandler(tornado.web.RequestHandler):
     def get(self):
         self.render('settings.html')
 
@@ -149,18 +148,6 @@ class JackHandler(tornado.web.RequestHandler):
         else:
             print('Command not recognised')            
 
-            
-def get_ip_address(ifname):
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    try:
-        return socket.inet_ntoa(fcntl.ioctl(
-            s.fileno(),
-            0x8915,  # SIOCGIFADDR
-            struct.pack('256s', ifname[:15])
-        )[20:24])
-    except IOError:
-        return "N/A"            
-            
 
 if __name__ == "__main__":
 
@@ -180,6 +167,6 @@ if __name__ == "__main__":
     print ("Listening on port:", options.port)
     main_loop = tornado.ioloop.IOLoop.instance()
     # Schedule event (5 seconds from now)
-    main_loop.call_later(5,get_ip_address('wlan0'))
+    #main_loop.call_later(5,get_ip_address('wlan0'))
     # Start main loop
     main_loop.start()
