@@ -5,29 +5,22 @@
 <script src="static/js/jquery-2.2.0.min.js"></script>
 <script>
     $(document).ready(function() {
-      $("#DrinkDiv, #DrinkDiv1").click(function(e) {
-        e.preventDefault();
-        var Bottle_Value = 1;
-        $.post("", {"command":"Pour", "value":Bottle_Value}, function(data) {
-            alert("Drink 1 Requested");
-        });
-      });
-      $("#PourDrink").click(function(e) {
+      $("#PD1, #PD2, #PD3, #PD4, #PD5").click(function(e) {
         e.preventDefault();
         var Bottle_Value = $(this).val();
         $.post("", {"command":"Pour", "value":Bottle_Value}, function(data) {
-            //alert("Drink 5 Requested");
+            //alert("Drink x Requested");
             //$('#results').html('Update: '+data.msg);
             $('#results').html('Drink ' + Bottle_Value + ' selected');
         });
       });
-      $("#Measure").click(function(e) {
+      $("#Single, #Double").click(function(e) {
         e.preventDefault();
         var Measure_Value = $(this).val();
         $.post("", {"command":"Measure", "value":Measure_Value}, function(data) {
             //alert("Measure changed");
             //$('#results').html('Update: '+data.msg);
-            $('#MeasureSelected').html(Measure_Value + ' selected');
+            $('#results').html(Measure_Value + ' selected');
         });
       });
     });
@@ -134,12 +127,13 @@ p{
 </style>
 </head>
 <body>
-<div id="DrinkDiv1" class="square bg img1">
+<form>
+<div class="square bg img1">
     <div class="content">
         <div class="table">
             <div class="table-cell">
                <a href="https://www.glenmorangie.com/en/glenmorangie-the-original">Original</a> <br>
-               <button id="PourDrink" name="Pour" value="1">Pour Measure</button>
+               <button id="PD1" value="1">Pour Measure</button>
             </div>
         </div>
     </div>
@@ -147,20 +141,19 @@ p{
 <div class="square bg img2">
    <div class="content">
         <div class="table">
-            <div id="MeasureSelected"></div>
             <div class="table-cell">
-            <button type="button">Single</button> <button type="button">Double</button>
-            <button id="Measure" name="Single" value="Single">Single</button> <button id="Measure" name="Double" value="Double">Single</button>
+		<button id="Single" value="Single">Single</button>
+		<button id="Double" value="Double">Double</button>
             </div>
         </div>
     </div>
 </div>
-<div id="DrinkDiv2" class="square bg img3">
+<div class="square bg img3">
     <div class="content">
         <div class="table">
             <div class="table-cell">
-                <a href="https://www.glenmorangie.com/en/glenmorangie-a-midwinter-nights-dram">Midwinter</a> <br>
-                <button id="PourDrink" name="Pour" value="2">Pour Measure</button>
+                //<a href="https://www.glenmorangie.com/en/glenmorangie-a-midwinter-nights-dram">Midwinter</a> <br>
+		<button id="PD2" value="2">Pour Measure</button>
             </div>
         </div>
     </div>
@@ -169,7 +162,7 @@ p{
     <div class="content">
         <div class="table">
             <div class="table-cell">
-            <button id="PourDrink" name="Pour" value="3">Pour Measure</button>
+            <button id="PD3" value="3">Pour Measure</button>
             </div>
         </div>
     </div>
@@ -178,7 +171,7 @@ p{
    <div class="content">
         <div class="table">
             <div class="table-cell">
-            <button id="PourDrink" name="Pour" value="4">Pour Measure</button>
+            <button id="PD4" value="4">Pour Measure</button>
             </div>
         </div>
     </div>
@@ -187,11 +180,12 @@ p{
    <div class="content">
         <div class="table">
             <div id="DrinkDiv5" class="table-cell">
-            <button id="PourDrink" name="Pour" value="5">Pour Measure</button>
+            <button id="PD5" value="5">Pour Measure</button>
             </div>
         </div>
     </div>
 </div>
 <div id="results"></div>
+</form>
 </body>
 </html>
